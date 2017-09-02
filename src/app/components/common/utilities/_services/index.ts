@@ -1,1 +1,1 @@
-﻿export * from './php-connection.service';
+﻿export * from './web-service.service';

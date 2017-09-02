@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { PhpConnectionService } from './php-connection.service';
+import { WebService } from './web-service.service';
 
 describe('PhpConnectionService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PhpConnectionService]
+      providers: [WebService]
     });
   });
 
-  it('should be created', inject([PhpConnectionService], (service: PhpConnectionService) => {
+  it('should be created', inject([WebService], (service: WebService) => {
     expect(service).toBeTruthy();
   }));
 });

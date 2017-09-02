@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PhpConnectionService } from '../common/utilities/_services/index';
+import { WebService } from '../common/utilities/_services/index';
 import { DataSource } from '@angular/cdk/collections';
 import { MdPaginator } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -20,14 +20,14 @@ import 'rxjs/add/operator/map';
 export class HomeComponent implements OnInit {
 
   displayedColumns = ['dato_1', 'dato_2', 'dato_3', 'dato_4'];
-  exampleDatabase = new ExampleDatabase(this.phpConnectionService);
+  exampleDatabase = new ExampleDatabase(this.webService);
   dataSource: ExampleDataSource | null;
 
   @ViewChild(MdPaginator) paginator: MdPaginator;
 
   li_resultados;
   constructor(
-    private phpConnectionService: PhpConnectionService
+    private webService: WebService
   ) { }
   ngOnInit() {
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
@@ -48,7 +48,7 @@ export class ExampleDatabase {
   get data(): UserData[] { return this.dataChange.value; }
 
   constructor(
-    private phpConnectionService: PhpConnectionService
+    private webService: WebService
   ) {
     // Fill up the database with 100 users.
     this.consultarConPost("select", "SELECT * FROM myTabla;");
@@ -67,7 +67,7 @@ export class ExampleDatabase {
       action: action,
       data: data
     };
-    this.phpConnectionService.postRawQuery(query, 10000).then(response => {
+    this.webService.postRawQuery(query, 10000).then(response => {
       // Con mi consulta ya sé que me va a regresar los datos exactamente como los necesito
       // pero no necesariamente siempre es así por los que en ocasiones es necesario usar
       // algún ciclo o estructura de control.

@@ -10,7 +10,7 @@ import { MdToolbarModule, MdTableModule, MdTabsModule,
 import { HeaderNavbarComponent } from './components/common/header-navbar/header-navbar.component';
 import { HomeComponent } from './components/home/home.component';
 
-import { PhpConnectionService } from './components/common/utilities/_services/php-connection.service';
+import { WebService } from './components/common/utilities/_services/web-service.service';
 
 @NgModule({
   declarations: [
@@ -30,8 +30,7 @@ import { PhpConnectionService } from './components/common/utilities/_services/ph
     HttpModule
   ],
   providers: [
-    
-    PhpConnectionService
+    WebService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,7 +7,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
  * @see [Http](https://angular.io/guide/http)
  */
 @Injectable()
-export class PhpConnectionService {
+export class WebService {
 
   /**
    * Es la url del servidor.
