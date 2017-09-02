@@ -67,9 +67,9 @@ export class ExampleDatabase {
    * @param data Es una cadena de texto o un diccionario de datos, dependiendo de lo que este
    * escrito en el servidor que se espera recibir.
    */
-  consultarConPost(action: string, data: any) {
+  consultarConPost(acction: string, data: any) {
     let query = {
-      action: action,
+      acction: acction,
       data: data
     };
     this.webService.postRawQuery(query, 10000).then(response => {
