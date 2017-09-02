@@ -50,7 +50,6 @@ export class ExampleDatabase {
   constructor(
     private webService: WebService
   ) {
-    // Fill up the database with 100 users.
     this.consultarConPost("select", "SELECT * FROM myTabla;");
   }
   /**
@@ -68,18 +67,15 @@ export class ExampleDatabase {
       data: data
     };
     this.webService.postRawQuery(query, 10000).then(response => {
-      // Con mi consulta ya sé que me va a regresar los datos exactamente como los necesito
-      // pero no necesariamente siempre es así por los que en ocasiones es necesario usar
-      // algún ciclo o estructura de control.
-      //
-      // for (let dato of response) {
-      //   this.li_resultados.push({
-      //     dato_1: dato.myLlave_1,
-      //     dato_2: dato.myLlave_2,
-      //     dato_3: dato.myLlave_3,
-      //     dato_4: dato.myLlave_4
-      // });
-      this.dataChange = response;
+      this.dataChange.next([{
+        dato_1: "dato_1", 
+        dato_2: "dato_2", 
+        dato_3: "dato_3", 
+        dato_4: "dato_4"
+      }]);
+      for (let datos of response) {
+        this.dataChange.next([datos]);
+      }
     }, fail => {
       console.log(fail);
     });

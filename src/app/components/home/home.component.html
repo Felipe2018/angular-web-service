@@ -8,27 +8,27 @@
                 The actual rendered columns are set as a property on the row definition" -->
       
           <!-- ID Column -->
-          <ng-container mdColumnDef="userId">
-            <md-header-cell *mdHeaderCellDef> ID </md-header-cell>
-            <md-cell *mdCellDef="let row"> {{row.id}} </md-cell>
+          <ng-container mdColumnDef="dato_1">
+            <md-header-cell *mdHeaderCellDef> dato_1 </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.dato_1}} </md-cell>
           </ng-container>
       
           <!-- Progress Column -->
-          <ng-container mdColumnDef="progress">
-            <md-header-cell *mdHeaderCellDef> Progress </md-header-cell>
-            <md-cell *mdCellDef="let row"> {{row.progress}}% </md-cell>
+          <ng-container mdColumnDef="dato_2">
+            <md-header-cell *mdHeaderCellDef> dato_2 </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.dato_2}}% </md-cell>
           </ng-container>
       
           <!-- Name Column -->
-          <ng-container mdColumnDef="userName">
-            <md-header-cell *mdHeaderCellDef> Name </md-header-cell>
-            <md-cell *mdCellDef="let row"> {{row.name}} </md-cell>
+          <ng-container mdColumnDef="dato_3">
+            <md-header-cell *mdHeaderCellDef> dato_3 </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.dato_3}} </md-cell>
           </ng-container>
       
           <!-- Color Column -->
-          <ng-container mdColumnDef="color">
-            <md-header-cell *mdHeaderCellDef> Color </md-header-cell>
-            <md-cell *mdCellDef="let row" [style.color]="row.color"> {{row.color}} </md-cell>
+          <ng-container mdColumnDef="dato_4">
+            <md-header-cell *mdHeaderCellDef> dato_4 </md-header-cell>
+            <md-cell *mdCellDef="let row" [style.color]="row.color"> {{row.dato_4}} </md-cell>
           </ng-container>
       
           <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
