@@ -50,6 +50,12 @@ export class ExampleDatabase {
   constructor(
     private webService: WebService
   ) {
+    this.dataChange.next([{
+      dato_1: "dato_u_1", 
+      dato_2: "dato_u_2", 
+      dato_3: "dato_u_3", 
+      dato_4: "dato_u_4"
+    }]);
     this.consultarConPost("select", "SELECT * FROM myTabla;");
   }
   /**
@@ -67,12 +73,6 @@ export class ExampleDatabase {
       data: data
     };
     this.webService.postRawQuery(query, 10000).then(response => {
-      this.dataChange.next([{
-        dato_1: "dato_1", 
-        dato_2: "dato_2", 
-        dato_3: "dato_3", 
-        dato_4: "dato_4"
-      }]);
       for (let datos of response) {
         this.dataChange.next([datos]);
       }
