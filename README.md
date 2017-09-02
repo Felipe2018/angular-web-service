@@ -1,28 +1,70 @@
-# AngularWebService
+## Angular web service
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
+Para usar este proyecto es necesario instalar [node](https://nodejs.org/es/) una vez instalado desde consola abierta como administrado en windows o usando sudo en linux instalar [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
 
-## Development server
+```bash
+npm install npm -g
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Con [npm](https://www.npmjs.com/) instalar el [CLI de angular](https://github.com/angular/angular-cli).
 
-## Code scaffolding
+```bash
+npm install -g @angular/cli
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+De forma opcional se puede instalar [git](https://git-scm.com/) para clonar el repositorio directamente.
 
-## Build
+```bash
+git clone https://github.com/jlozoya/angular-web-service-example.git
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Con todo lo anterior listo, hay que instalar las librerias del proyecto de forma local.
 
-## Running unit tests
+```bash
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Y por ultimo compilar el proyecto, para lo que hay dos opciones.
 
-## Running end-to-end tests
+Si no se quiere mover los archivos de la carpeta donde se generan y así se accesara a la página en la dirección localhost/angular-web-service/dist/
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+```bash
+ng build --base-href /angular-web-service/dist/ --prod
+```
 
-## Further help
+O una vez generados los archivos se pueden mover de la carpeta donde se generan a la raíz del web host.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```bash
+ng build --base-href /
+```
+## Angular CLI
+
+Este proyecto se generó con [Angular CLI](https://github.com/angular/angular-cli) versión 1.3.2.
+
+## Servidor de desarrollo
+
+Ejecute `ng serve` para un servidor dev. Navegue hasta `http://localhost:4200/`. La aplicación se volverá a cargar automáticamente si cambia alguno de los archivos de codigo fuente.
+
+O `ng serve --port 8000 -o` en caso de que el puerto este ocupado.
+
+## Andamios de código
+
+Ejecutar `ng generate component component-name` para generar un nuevo componente. También puedes usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Construción
+
+Ejecutar `ng build` para construir el proyecto. Los artefactos de compilación se almacenarán en el directorio `dist/`. Utilice el indicador `-prod` para una compilación de producción.
+
+Para construir el proyecto y no moverlo de la carpeta donde se genera se esta usando el siguiente comando `ng build --base-href /angular-web-service/dist/ --prod`.
+
+## Ejecución de pruebas unitarias
+
+Ejecutar `ng test` corre las pruebas de unitarias vía [Karma](https://karma-runner.github.io).
+
+## Ejecución de pruebas de extremo a extremo
+
+Ejecutar `ng e2e` corre las pruebas de extremo a extremo a través de [Protractor] (http://www.protractortest.org/). Antes de ejecutar las pruebas asegúrese de que está sirviendo la aplicación a través de `ng serve`.
+
+## Ayuda futura
+
+Para obtener más ayuda sobre la CLI angular, utilice `ng help` o visite el [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
