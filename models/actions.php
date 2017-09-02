@@ -33,10 +33,10 @@ if (isset($postdata)) {
       break;
     }
   } else {
-    json_encode("Intento de acceso directo a `actions.php`");
+    header("HTTP/1.0 404 Not Found");
   }
 } else {
-  json_encode("Intento de post mal formado a `actions.php`");
+  header("HTTP/1.0 404 Not Found");
 }
 /**
  * Selecciona los datos de la base de datos según 
