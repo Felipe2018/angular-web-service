@@ -47,7 +47,6 @@ if (isset($postdata)) {
  * @return ArrayObject | String
  */
 function select($conn, $data) {
-  $sqlite = new Conexion("../var/db/weewx_20172408.sdb");
   $query = $conn->query($data);
   if ($query->num_rows > 0) {
     while($fila = $query->fetch_array(MYSQLI_ASSOC)) {
@@ -62,11 +61,6 @@ function select($conn, $data) {
     return json_encode($resultd_arr);
   } else {
     return json_encode("No se encotraron resultados");
-  }
-}
-class Conexion extends SQLite3 {
-  function __construct($db_name) {
-      $this->open($db_name);
   }
 }
 ?>
