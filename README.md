@@ -59,7 +59,7 @@ Para construir el proyecto y no moverlo de la carpeta donde se genera se esta us
 
 ## Ejecución de pruebas unitarias
 
-Ejecutar `ng test` corre las pruebas de unitarias vía [Karma](https://karma-runner.github.io).
+Ejecutar `ng test` corre las pruebas unitarias con [Karma](https://karma-runner.github.io).
 
 ## Ejecución de pruebas de extremo a extremo
 
