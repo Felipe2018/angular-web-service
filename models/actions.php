@@ -33,10 +33,12 @@ if (isset($postdata)) {
       break;
     }
   } else {
-    header("HTTP/1.0 404 Not Found");
+    echo json_encode("Post vacío");
+    //header("HTTP/1.0 404 Not Found");
   }
 } else {
-  header("HTTP/1.0 404 Not Found");
+  echo json_encode("Post mal echo");
+  //header("HTTP/1.0 404 Not Found");
 }
 /**
  * Selecciona los datos de la base de datos según 

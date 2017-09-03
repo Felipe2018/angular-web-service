@@ -12,7 +12,7 @@ export class WebService {
   /**
    * Es la url del servidor.
    */
-  url: string = "http://localhost/angular-web-service";
+  url: string = "http://localhost/angular-web-service-example";
   /**
    * Es la extención de la url a la que se desea accesar.
    */
