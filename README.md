@@ -30,11 +30,11 @@ Con todo lo anterior listo, hay que instalar las librerias del proyecto de forma
 npm install
 ```
 
-En los proyectos de node las librerías que utiliza el proyecto se van agregando en el archivo package.json generalmente de forma automática luego de descargarla `usando el comando --save`.
+En los proyectos de node las librerías que utiliza el proyecto se van agregando en el archivo package.json, se agregan de forma automática cuando usas `--save` al realizar la descarga, por ejemplo `npm install bootstrap@4.0.0-alpha.6 --save`.
 
 El último paso es compilar el proyecto para verificar que todo está en orden, para lo que hay dos opciones.
 
-Si no se quiere mover los archivos de la carpeta donde se generan y así se accesara a la página en la dirección localhost/angular-web-service/dist/
+Si no se quiere mover los archivos de la carpeta donde se generan y así se accesara a la página en la dirección /angular-web-service/dist/
 
 ```bash
 ng build --base-href /angular-web-service/dist/ --prod
