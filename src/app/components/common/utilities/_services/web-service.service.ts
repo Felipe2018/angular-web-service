@@ -12,7 +12,7 @@ export class WebService {
   /**
    * Es la url del servidor.
    */
-  url: string = "http://localhost/angular-web-service-example";
+  url: string = "http://localhost/angular-web-service";
   /**
    * Es la extención de la url a la que se desea accesar.
    */
@@ -31,7 +31,7 @@ export class WebService {
     });
   }
   /**
-   * Regresa la url del servidor web ej. "http://xxx.xxx.xxx.xxx/cimav_ionic".
+   * Regresa la url del servidor web ej. "http://xxx.xxx.xxx.xxx/angular-web-service".
    * @return url 
    */
   public getUrl(): string{
