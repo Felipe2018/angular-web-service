@@ -13,7 +13,7 @@ import { WebService } from '../common/utilities/_services/index';
 export class HomeComponent implements OnInit {
 
   li_resultados: UserData[] = [];
-  pageNumber: number = 1;
+  pageNumber = 1;
 
   constructor(
     private webService: WebService
@@ -22,16 +22,16 @@ export class HomeComponent implements OnInit {
     this.consultarConPost("select", "SELECT * FROM myTabla;");
   }
   /**
-   * Llama la función postRawQuery del servicio phpConnectionService y le pasa como parámetro lo que se va 
+   * Llama la función postRawQuery del servicio phpConnectionService y le pasa como parámetro lo que se va
    * a enviar al servidor.
-   * 
+   *
    * @param action Es el nombre de la acción que se quiere realizar, puede variar dependiendo de lo que este
    * escrito en el servidor que se espera recibir.
    * @param data Es una cadena de texto o un diccionario de datos, dependiendo de lo que este
    * escrito en el servidor que se espera recibir.
    */
   consultarConPost(acction: string, data: any) {
-    let query = {
+    const query = {
       acction: acction,
       data: data
     };
@@ -44,8 +44,8 @@ export class HomeComponent implements OnInit {
 }
 
 export interface UserData {
-  dato_1: string,
-  dato_2: string,
-  dato_3: string,
-  dato_4: string
+  dato_1: string;
+  dato_2: string;
+  dato_3: string;
+  dato_4: string;
 }

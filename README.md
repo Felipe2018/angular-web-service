@@ -21,10 +21,10 @@ npm install -g @angular/cli
 - De forma opcional se puede instalar [git](https://git-scm.com/) para clonar el repositorio directamente.
 
 ```bash
-git clone https://github.com/jlozoya/angular-web-service-example.git
+git clone https://github.com/jlozoya/angular-web-service.git
 ```
 
-Con todo lo anterior listo, hay que instalar las librerias del proyecto de forma local.
+Despues hay que instalar las librerias del proyecto de forma local.
 
 ```bash
 npm install
@@ -79,3 +79,14 @@ Ejecutar `ng e2e` corre las pruebas de extremo a extremo a través de [Protracto
 ## Ayuda futura
 
 Para obtener más ayuda sobre la CLI angular, utilice `ng help` o visite el [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Librerías instaladas
+
+```bash
+npm install --save popper.js angular-popper
+npm install jquery --save
+npm install --save-dev @types/jquery
+npm install tether --save
+npm install bootstrap@4.0.0-beta.2 --save
+npm install ngx-pagination --save
+```
