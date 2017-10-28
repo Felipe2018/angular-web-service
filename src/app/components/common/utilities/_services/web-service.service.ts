@@ -93,8 +93,8 @@ export class WebService {
    * @param {any} query Es la consulta a realizar.
    * @param {string} inUrl Es la url a la que se desea hacer post.
    * @param {number} timeout Tiempo limite para terminar el proceso.
-   * @return {Promise<any> | Promise<string>} Regresa la respuesta del servidor según la consulta que se realice
-   * o un mensaje de error.
+   * @return {Promise<any> | Promise<string>} Regresa la respuesta del servidor según la consulta que
+   * se realice o un mensaje de error.
    */
   postRawQueryOpenUrl(query: any, inUrl: string, timeout?: number): any {
     return new Promise((resolve, reject) => {
