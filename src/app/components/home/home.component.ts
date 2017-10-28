@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebService } from '../common/utilities/_services/index';
-
 /**
- * Genera la vista de la página principal.
+ * Genera la vista de la página home.
  * @author Juan Lozoya <jlozoya1995@gmail.com>
  */
 @Component({
@@ -11,8 +10,13 @@ import { WebService } from '../common/utilities/_services/index';
   styles: []
 })
 export class HomeComponent implements OnInit {
-
-  li_resultados: UserData[] = [];
+  /**
+   * Es un array donde se almacenarían los datos resultantes de la consulta.
+   */
+  liResultados: HomeComponentLiResultados[] = [];
+  /**
+   * Es el número de la página de la tabla seleccionado.
+   */
   pageNumber = 1;
 
   constructor(
@@ -25,9 +29,9 @@ export class HomeComponent implements OnInit {
    * Llama la función postRawQuery del servicio phpConnectionService y le pasa como parámetro lo que se va
    * a enviar al servidor.
    *
-   * @param action Es el nombre de la acción que se quiere realizar, puede variar dependiendo de lo que este
+   * @param {string} action Es el nombre de la acción que se quiere realizar, puede variar dependiendo de lo que este
    * escrito en el servidor que se espera recibir.
-   * @param data Es una cadena de texto o un diccionario de datos, dependiendo de lo que este
+   * @param {any} data Es una cadena de texto o un diccionario de datos, dependiendo de lo que este
    * escrito en el servidor que se espera recibir.
    */
   consultarConPost(acction: string, data: any) {
@@ -35,15 +39,18 @@ export class HomeComponent implements OnInit {
       acction: acction,
       data: data
     };
-    this.webService.postRawQuery(query, 10000).then((response: UserData[]) => {
-      this.li_resultados = response;
+    this.webService.postRawQuery(query, 10000).then((response: HomeComponentLiResultados[]) => {
+      this.liResultados = response;
     }, fail => {
       console.log(fail);
     });
   }
 }
-
-export interface UserData {
+/**
+ * Las interfaces en TypeScript sirven para definir tipos de clases variables y funciones,
+ * pero si no necesitas tener definidas las variables puedes omitir utilizarlas.
+ */
+export interface HomeComponentLiResultados {
   dato_1: string;
   dato_2: string;
   dato_3: string;

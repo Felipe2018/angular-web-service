@@ -24,14 +24,15 @@ export class WebService {
 
   constructor(public http: Http) {
     const headers = new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded'
     });
     this.options = new RequestOptions({
-        headers: headers
+      headers: headers
     });
   }
   /**
-   * Ejecuta una regex para saber si la url es válida.
+   * Ejecuta una regex para saber si la url es válida, con esta función no es necesario estar
+   * definiendo la dirección del servidor web.
    */
   getCorrectUrl() {
     if (typeof location.host === "undefined" || (/(localhost|127.0.0.1)?$/).test(location.host)) {
@@ -44,7 +45,7 @@ export class WebService {
   }
   /**
    * Regresa la url del servidor web ej. "http://xxx.xxx.xxx.xxx/angular-web-service".
-   * @return url
+   * @return {string} Regresa la url.
    */
   public getUrl(): string {
     return this.url;
@@ -56,11 +57,10 @@ export class WebService {
    * Ejemplo de consulta:
    * {"action": "select", "data": "SELECT * FROM myTabla"}
    *
-   * @param query es la consulta a realizar.
-   * @param timeout tiempo limite para terminar el proceso
-   * @return Es la respuesta del servidor según la consulta que se realice
-   * puede ser un Array<Object> o una cadena de texto
-   *  | reject Es una cadena de texto con la respuesta del servidor o un mensaje de error.
+   * @param {any} query Es la consulta a realizar.
+   * @param {number} timeout Tiempo limite para terminar el proceso
+   * @return {Promise<any> | Promise<string>} Regresa la respuesta del servidor según la consulta que
+   * se realice o un mensaje de error.
    */
   postRawQuery(query: any, timeout?: number): any {
     return new Promise((resolve, reject) => {
@@ -90,12 +90,11 @@ export class WebService {
    * Ejemplo de consulta:
    * {"action": "select", "data": "SELECT * FROM myTabla"}
    *
-   * @param query Es la consulta a realizar.
-   * @param inUrl Es la url a la que se desea hacer post.
-   * @param timeout Tiempo limite para terminar el proceso.
-   * @return Es la respuesta del servidor según la consulta que se realice
-   * puede ser un Array<Object> o una cadena de texto
-   *  | reject Es una cadena de texto con la respuesta del servidor o un mensaje de error.
+   * @param {any} query Es la consulta a realizar.
+   * @param {string} inUrl Es la url a la que se desea hacer post.
+   * @param {number} timeout Tiempo limite para terminar el proceso.
+   * @return {Promise<any> | Promise<string>} Regresa la respuesta del servidor según la consulta que se realice
+   * o un mensaje de error.
    */
   postRawQueryOpenUrl(query: any, inUrl: string, timeout?: number): any {
     return new Promise((resolve, reject) => {
