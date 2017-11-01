@@ -37,7 +37,7 @@ export class WebService {
   getCorrectUrl() {
     if (typeof location.host === "undefined" || (/(localhost|127.0.0.1)?$/).test(location.host)) {
       // ip privada
-      return "10.200.0.10";
+      return "localhost";
     } else {
       // dirección en la url
       return location.host;
