@@ -3,14 +3,16 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 /**
  * Maneja las consultas a la base de datos remota, es un proveedor Http echo para ser llamado
  * desde toda la aplicación y realizar los post al servidor desde aquí.
- * @author Juan Lozoya <jlozoya1995@gmail.com>
- * @see [Http](https://angular.io/guide/http)
+ * @author <a href="mailto:jlozoya1995@gmail.com">Juan Lozoya</a>
+ * @see [Http](https://angular.io/guide/http), [Services](https://angular.io/tutorial/toh-pt4)
  */
 @Injectable()
 export class WebService {
 
   /**
    * Es la url del servidor.
+   *
+   * Llama a la función getCorrectUrl()
    */
   url = `http://${this.getCorrectUrl()}/angular-web-service`;
   /**
@@ -31,6 +33,10 @@ export class WebService {
     });
   }
   /**
+   * Para hacer referencia a un servidor local, cuando se están haciendo pruebas, por ejemplo,
+   * al utilizar __ng serve__ y al encontrarse la aplicación en producción hace referencia al
+   * servidor donde se encuentre alojada.
+   *
    * Ejecuta una regex para saber si la url es válida, con esta función no es necesario estar
    * definiendo la dirección del servidor web.
    */

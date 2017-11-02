@@ -4,6 +4,10 @@ import { HomeComponent } from './components/home/home.component';
 /**
  * Aquí se pueden declarar las rutas por las que se podrá navegar en la aplicación, si necesitas
  * un sistema de login puedes agregarle un Guard.
+ *
+ * Está escrito separado de app.module.ts para más limpieza, se puede agregar un guard en caso de que se
+ * requiera un sistema de login.
+ *
  * @see [Ruteo y navegación](https://angular.io/guide/router)
  */
 const AppRoutesService: Routes = [

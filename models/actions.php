@@ -1,7 +1,7 @@
 <?php
 /**
  * El siguiente codigo administra las entradas y salidas de la base de datos.
- * @author Juan Lozoya <jlozoya1995@gmail.com>
+ * @author <a href="mailto:jlozoya1995@gmail.com">Juan Lozoya</a>
  */
 if (isset($_SERVER['HTTP_ORIGIN'])) {
   header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
@@ -41,8 +41,8 @@ if (isset($postdata)) {
   //header("HTTP/1.0 404 Not Found");
 }
 /**
- * Selecciona los datos de la base de datos según 
- * la consulta que entre regresa un arreglo con 
+ * Selecciona los datos de la base de datos según
+ * la consulta que entre regresa un arreglo con
  * la información o un mensaje según corresponda.
  * @param type $conn Es un objeto con la información para la conexión a la base de datos.
  * @param type $query Es la consulta a realizar.

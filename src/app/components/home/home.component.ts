@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WebService } from '../common/utilities/_services/index';
 /**
- * Genera la vista de la página home.
- * @author Juan Lozoya <jlozoya1995@gmail.com>
+ * Establece la vista de la página home.
+ * @author <a href="mailto:jlozoya1995@gmail.com">Juan Lozoya</a>
  */
 @Component({
   selector: 'app-home',
