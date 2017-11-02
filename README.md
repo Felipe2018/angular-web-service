@@ -6,12 +6,6 @@ Para poder usar el proyecto se necesita el CLI de angular, los pasos para instal
 
 - Instalar [node](https://nodejs.org/es/) 
 
-- Desde consola como administrador en windows o usando sudo en linux instalar [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
-
-```bash
-npm install npm -g
-```
-
 - Con [npm](https://www.npmjs.com/) instalar el [CLI de angular](https://github.com/angular/angular-cli).
 
 ```bash
@@ -24,31 +18,31 @@ npm install -g @angular/cli
 git clone https://github.com/jlozoya/angular-web-service.git
 ```
 
-Despues hay que instalar las librerias del proyecto de forma local.
+- Despues hay que instalar las dependencias del proyecto.
 
 ```bash
 npm install
 ```
 
-En los proyectos de node las librerías que utiliza el proyecto se van agregando en el archivo package.json, se agregan de forma automática cuando usas `--save` al realizar la descarga, por ejemplo `npm install bootstrap@4.0.0-alpha.6 --save`.
+En los proyectos de node las librerías se van agregando en el archivo package.json, se agregan de forma automática cuando usas `--save` al realizar la descarga, por ejemplo `npm install bootstrap@4.0.0-beta.2 --save`.
 
-El último paso es compilar el proyecto para verificar que todo está en orden, para lo que hay dos opciones.
+El último paso es ejecutar el proyecto para verificar que todo está en orden, para lo que hay dos opciones.
 
-Si no se quiere mover los archivos de la carpeta donde se generan y así se accesara a la página en la dirección /angular-web-service/dist/
+```bash
+ng serve
+```
+
+```bash
+ng build
+```
+
+Cuando compilas el proyecto, pero no lo quieres mover de la carpeta donde se genera a la raíz o lo vas a colocar en una carpeta diferente puedes usar el siguiente comando:
 
 ```bash
 ng build --base-href /angular-web-service/dist/ --prod
 ```
 
-O una vez generados los archivos se pueden mover de la carpeta donde se generan a la raíz del web host.
-
-```bash
-ng build --base-href /
-```
-
-Otra opción es usar `ng serve`.
-
-## Angular CLI
+# Angular CLI
 
 Este proyecto se generó con [Angular CLI](https://github.com/angular/angular-cli) versión 1.3.2.
 
