@@ -76,11 +76,12 @@ Para obtener más ayuda sobre la CLI angular, utilice `ng help` o visite el [Ang
 
 ## Librerías instaladas
 
-```bash
-npm install --save popper.js angular-popper
+```node
+npm install --save popper ngx-popper
 npm install jquery --save
 npm install --save-dev @types/jquery
 npm install tether --save
 npm install bootstrap@4.0.0-beta.2 --save
 npm install ngx-pagination --save
+npm install node-sass sass-loader raw-loader --save-dev
 ```
