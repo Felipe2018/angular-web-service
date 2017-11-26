@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/timeout';
 /**
- * Maneja las consultas a la base de datos remota, es un proveedor Http echo para ser llamado
+ * Maneja las consultas a un web service, es un proveedor Http echo para ser llamado
  * desde toda la aplicación y realizar los post al servidor desde aquí.
- * @author <a href="mailto:jlozoya1995@gmail.com">Juan Lozoya</a>
+ * @author <a href="https://www.youtube.com/channel/UCV_hl9Z6PnvlwQOhmikjrBQ" target="_blank">Juan Lozoya</a>
  * @see [Http](https://angular.io/guide/http), [Services](https://angular.io/tutorial/toh-pt4)
  */
 @Injectable()
@@ -38,14 +39,14 @@ export class WebService {
    * servidor donde se encuentre alojada.
    *
    * Ejecuta una regex para saber si la url es válida, con esta función no es necesario estar
-   * definiendo la dirección del servidor web.
+   * definiendo la dirección del servidor de desarrollo o de producción.
    */
   getCorrectUrl() {
-    if (typeof location.host === "undefined" || (/(localhost|127.0.0.1)?$/).test(location.host)) {
-      // ip privada
+    if (typeof location.host === "undefined" || (/(localhost|127.0.0.1)?$/).test(location.host) || location.host === "") {
+      // Puedes cambiar esta dirección para hacer referencia a tu servidor de desarrollo.
       return "localhost";
     } else {
-      // dirección en la url
+      // Dirección arrastrada desde la url.
       return location.host;
     }
   }
@@ -53,74 +54,92 @@ export class WebService {
    * Regresa la url del servidor web ej. "http://xxx.xxx.xxx.xxx/angular-web-service".
    * @return {string} Regresa la url.
    */
-  public getUrl(): string {
+  getUrl(): string {
     return this.url;
   }
   /**
-   * Se envia una peticion a un servidor web y regresa los datos que son recuperados
-   * en formato JSON.
+   * Se envía una petición a un servidor web y regresa los datos que son recuperados,
+   * la respuesta del servidor se espera en formato JSON.
    *
-   * Ejemplo de consulta:
-   * {"action": "select", "data": "SELECT * FROM myTabla"}
+   * Ejemplo de uso:
+   *
+   * ```typescript
+   * const query = {
+   *  task: 'select',
+   *  userId: this.currentUser.id,
+   *  data: "SELECT * FROM miTabla;"
+   * };
+   * this.webService.postRawQuery(query, 5000).then(
+   * (success) => {
+   *  console.log(success);
+   * }, fail => {
+   *  console.log(fail);
+   * });
+   * ```
    *
    * @param {any} query Es la consulta a realizar.
    * @param {number} timeout Tiempo limite para terminar el proceso
-   * @return {Promise<any> | Promise<string>} Regresa la respuesta del servidor según la consulta que
+   * @return {Promise<any>} Regresa la respuesta del servidor según la consulta que
    * se realice o un mensaje de error.
    */
   postRawQuery(query: any, timeout?: number): any {
     return new Promise((resolve, reject) => {
       // Esta instrucion envia los datos
-      this.http.post(this.urlActions, query, this.options).subscribe(response => {
+      this.http.post(this.urlActions, query, this.options).timeout(timeout || 10000)
+      .subscribe(response => {
         try {
-          const result = JSON.parse(response["_body"]);
-          resolve(result);
+          resolve(JSON.parse(response["_body"]));
         } catch (error) {
-          reject(`Error: ${error}, Content: ${response["_body"]}`);
+          reject({type: 'error', data: "ERROR.DATA-FORMAT", verbose: `${error}: ${response["_body"]}`});
         }
       }, fail => {
         console.log(fail["_body"]);
-        reject(`Fail ${JSON.stringify(fail)}`);
+        reject({type: 'error', data: "ERROR.NO-SERVER-CONNECTION", verbose: fail["_body"]});
       });
-      if (timeout) {
-        setTimeout(() => {
-          reject("No tienes conexión a internet");
-        }, timeout);
-      }
     });
   }
   /**
-   * Se envia una peticion a un servidor web y regresa los datos que son recuperados
-   * en formato JSON.
+   * Se envía una petición a un servidor web y regresa los datos que son recuperados, se puede agregar
+   * parte de la url a la que realizara la petición, la respuesta del servidor se espera en formato JSON.
    *
-   * Ejemplo de consulta:
-   * {"action": "select", "data": "SELECT * FROM myTabla"}
+   * Ejemplo de uso:
+   *
+   * ```typescript
+   * const query = {
+   *  task: 'select',
+   *  userId: this.currentUser.id,
+   *  data: "SELECT * FROM miTabla;"
+   * };
+   * this.webService.postRawQuery(query,
+   * "/otroArchivo.php", 5000).then(
+   * (success) => {
+   *  console.log(success);
+   * }, fail => {
+   *  console.log(fail);
+   * });
+   * ```
    *
    * @param {any} query Es la consulta a realizar.
    * @param {string} inUrl Es la url a la que se desea hacer post.
    * @param {number} timeout Tiempo limite para terminar el proceso.
-   * @return {Promise<any> | Promise<string>} Regresa la respuesta del servidor según la consulta que
+   * @return {Promise<any>} Regresa la respuesta del servidor según la consulta que
    * se realice o un mensaje de error.
    */
   postRawQueryOpenUrl(query: any, inUrl: string, timeout?: number): any {
     return new Promise((resolve, reject) => {
-      // Esta instrucion envia los datos
-      this.http.post(inUrl, query, this.options).subscribe(response => {
+      this.http.post(inUrl, query, this.options)
+      .timeout(timeout || 10000)
+      .subscribe(response => {
         try {
           const result = JSON.parse(response["_body"]);
           resolve(result);
         } catch (error) {
-          reject(`Error: ${error}, Content: ${response["_body"]}`);
+          reject({type: 'error', data: "ERROR.DATA-FORMAT", verbose: `${error}: ${response["_body"]}`});
         }
       }, fail => {
         console.log(fail["_body"]);
-        reject(`Fail ${JSON.stringify(fail)}`);
+        reject({type: 'error', data: "ERROR.NO-SERVER-CONNECTION", verbose: fail["_body"]});
       });
-      if (timeout) {
-        setTimeout(() => {
-          reject("No tienes conexión a internet");
-        }, timeout);
-      }
     });
   }
 }

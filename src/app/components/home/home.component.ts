@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebService } from '../common/utilities/_services/index';
 /**
  * Establece la vista de la página home.
- * @author <a href="mailto:jlozoya1995@gmail.com">Juan Lozoya</a>
+ * @author <a href="https://www.youtube.com/channel/UCV_hl9Z6PnvlwQOhmikjrBQ" target="_blank">Juan Lozoya</a>
  */
 @Component({
   selector: 'app-home',
