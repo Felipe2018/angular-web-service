@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WebService } from '../common/utilities/_services/index';
+import { ApiService } from '../common/utilities/_services/index';
 /**
  * Establece la vista de la página home.
  * @author <a href="https://www.youtube.com/channel/UCV_hl9Z6PnvlwQOhmikjrBQ" target="_blank">Juan Lozoya</a>
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   pageNumber = 1;
 
   constructor(
-    private webService: WebService
+    private apiService: ApiService
   ) { }
   ngOnInit() {
     this.consultarConPost("select", "SELECT * FROM myTabla;");
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
       acction: acction,
       data: data
     };
-    this.webService.postRawQuery(query, 10000).then((response: HomeComponentLiResultados[]) => {
+    this.apiService.postRawQuery('/models/actions.php', query, 10000).then((response: HomeComponentLiResultados[]) => {
       this.liResultados = response;
     }, fail => {
       console.log(fail);

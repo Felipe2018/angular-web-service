@@ -1,1 +1,1 @@
-﻿export * from './web-service.service';
+﻿export * from './api.service';
