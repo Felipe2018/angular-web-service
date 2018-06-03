@@ -8,7 +8,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderNavbarComponent } from './components/common/header-navbar/header-navbar.component';
 import { HomeComponent } from './components/home/home.component';
 
-import { ApiService } from './components/common/utilities/_services/api.service';
+import { ApiService } from './components/common/utilities/_services/index';
 
 @NgModule({
   declarations: [
