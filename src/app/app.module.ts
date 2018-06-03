@@ -8,7 +8,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderNavbarComponent } from './components/common/header-navbar/header-navbar.component';
 import { HomeComponent } from './components/home/home.component';
 
-import { WebService } from './components/common/utilities/_services/web-service.service';
+import { ApiService } from './components/common/utilities/_services/api.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { WebService } from './components/common/utilities/_services/web-service.
     HttpModule
   ],
   providers: [
-    WebService
+    ApiService
   ],
   bootstrap: [AppComponent]
 })
